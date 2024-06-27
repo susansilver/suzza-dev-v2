@@ -20,12 +20,9 @@ export default defineConfig({
     },
     sidebar: [{
       label: 'Getting Sarted',
-      items: [
-      // Each item here is one entry in the navigation menu.
-      {
-        label: 'Introduction to Astro',
-        link: '/introduction/astro/'
-      }]
+      autogenerate: {
+        directory: 'Introduction',
+      }
     }, {
       label: 'Chapter One',
       autogenerate: {
@@ -76,7 +73,13 @@ export default defineConfig({
       autogenerate: {
         directory: 'Ten'
       }
-    }, {
+    },{
+      label: 'Chapter Eleven',
+      autogenerate: {
+        directory: 'Eleven'
+      }
+    },
+     {
       label: 'Things to Remember',
       items: [{
         label: 'Recommended Integrations',
