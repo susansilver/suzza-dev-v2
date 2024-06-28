@@ -9,11 +9,11 @@ There is an integration for Astro that makes this easier. It is called Astro Fon
 
 ## Using Astro Font
 
-You will find the [instructions for Astro Font](https://www.launchfa.st/features/astro-font) on their website. The nice thing about it is that you can use Google Fonts or local fonts. All you have to do is to import add your code to the head tag. It will automatically add the @font-face declarations and optimize your fonts.
+You will find the [instructions for Astro Font](https://www.launchfa.st/features/astro-font) on their website. The nice thing about it is that you can use Google Fonts or local fonts. All you have to do is to import and add your code to the head tag. It will automatically add the @font-face declarations and optimize your fonts.
 
-You have to use a CSS Selector to apply your fonts. So, you might have to create a class. This is how I applied it to my logo by using the class .logo. Though you can easily use a heading like H1 as well. Or using body to make it the font for your body text. Visit the website to see more examples.
+You have to use a CSS Selector to apply your fonts. So, you might have to create a class. This is how I applied it to my logo by using the class .logo. Though you can easily use a heading like H1 as well. Or using body to make it the font for your body text. Visit the website to see more examples. Including use with Google Fonts CDN.
 
-By the way, You can download Google Fonts to use locally with the utility [Google Webfonts Helper](https://gwfh.mranftl.com/fonts). This is my preference and what I have used for my website.
+I prefer local fonts though. While there might be some cons there are also some gains. It is up to you but [consider the case for and against local font hosting](https://www.tunetheweb.com/blog/should-you-self-host-google-fonts/). By the way, You can download Google Fonts to use locally with the utility [Google Webfonts Helper](https://gwfh.mranftl.com/fonts).
 
 Here is my setup with local fonts. If you use this method, you will have to add your fonts to a public folder so they will load.
 
