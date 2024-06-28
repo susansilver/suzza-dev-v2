@@ -150,7 +150,7 @@ When using font-family, I have to use the name that I gave my font in the @font-
 />
 ```
 
-3. To apply your fonts using Tailwind CSS you will use the Tailwind Config file. You do this [by using theme to declare your font-families](https://tailwindcss.com/docs/font-family#using-custom-values).
+3. To apply your fonts, add the following to your Tailwind Config file. You do this [by using theme to declare your font-families](https://tailwindcss.com/docs/font-family#using-custom-values).
 
 ```js
 /** @type {import('tailwindcss').Config} */
