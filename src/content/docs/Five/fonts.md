@@ -71,14 +71,14 @@ This shortcut saves time but you can also do things manually. Here are the instr
 You will need to do a few things
 
 1. If using local fonts add them to your public folder.
-2. Add the @font-face decloration in your css
+2. Add the @font-face declaration in your css
 3. Link to your fonts in your head section
-4. Preload your fonts to prevent the flash of unstyled text.
+4. Preload your fonts to prevent the flash of unstyled text
 5. Use font-family in your css to apply your font using selectors
 
 ### @font-face
 
-This is what the @font-face decloration looks like. Add this to your CSS stylesheet.
+This is what the @font-face declaration looks like. Add this to your CSS stylesheet.
 
 ```css
 @font-face {
@@ -106,15 +106,15 @@ This is what you will add to your head section to load your fonts. Adding preloa
 
 ### Using Font-Family
 
-To apply your new fonts, you have to use the css property font-family. It is farily simple to use. Let's use the above font as a reference.
+To apply your new fonts, you have to use the css property font-family. It is fairly simple to use.
 
 ```css
 .fancy-text {
-  font-family: "Poiret", cursive;
+  font-family: "Poiret", Arial, cursive;
 }
 ```
 
-When using font-family, I have to use the name that I gave my font in the @font-face decloration. It also needs to be in quotes.
+When using font-family, I have to use the name that I gave my font in the @font-face declaration. It also needs to be in quotes.
 
 ## Adding Custom Fonts with Tailwind CSS
 
@@ -129,24 +129,6 @@ When using font-family, I have to use the name that I gave my font in the @font-
   @font-face {
     font-family: "Poiret";
     src: url("/fonts/poiret-one-v16-latin-regular.woff2") format("woff2");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "Ouroboros";
-    src: url("/fonts/Ouroboros-Regular.woff2") format("woff2"), url("/fonts/Ouroboros-Regular.woff")
-        format("woff");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "Righteous";
-    src: url("/fonts/righteous-v13-latin-regular.woff2") format("woff2"), url("/fonts/righteous-v13-latin-regular.woff")
-        format("woff");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -166,26 +148,19 @@ When using font-family, I have to use the name that I gave my font in the @font-
 />
 ```
 
-3. To apply your fonts using Tailwind CSS you will use the Tailwind Config file. You do this [by using theme to declare your font-famlies](https://tailwindcss.com/docs/font-family#using-custom-values). Here, I have also used extend but I'm not sure that is neccessary. It will still work though.
+3. To apply your fonts using Tailwind CSS you will use the Tailwind Config file. You do this [by using theme to declare your font-families](https://tailwindcss.com/docs/font-family#using-custom-values).
 
-```
-
+```js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-	theme: {
-	  extend: {
-
-		fontFamily: {
-		  display: ['"Poiret"', 'Arial', 'cursive'],
-		  logo: ['"Righteous"', 'Arial', 'cursive'],
-		  birthday: ['"Ouroboros"', 'Arial', 'cursive'],
-	  },
-
-	  },
-	},
-	plugins: [ ],
-  }
+  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  theme: {
+    fontFamily: {
+      display: ['"Poiret"', "Arial", "cursive"],
+    },
+  },
+  plugins: [],
+};
 ```
 
-Now when we want to apply these we have a few new classes to use. Using the class "font-display" will apply the font-family we have configured for display. Same will go for the classes "font-logo" and "font-birthday."
+This gives us a new class to use, "font-display." This will apply the font-family defined in our theme as display. You can add additional font-families with their own name that will become the class name.
