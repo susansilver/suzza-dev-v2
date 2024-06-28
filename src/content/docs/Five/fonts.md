@@ -13,7 +13,7 @@ You will find the [instructions for Astro Font](https://www.launchfa.st/features
 
 You have to use a CSS Selector to apply your fonts. So, you might have to create a class. This is how I applied it to my logo by using the class .logo. Though you can easily use a heading like H1 as well. Or using body to make it the font for your body text. Visit the website to see more examples. Including use with Google Fonts CDN.
 
-I prefer local fonts though. While there might be some cons there are also some gains. It is up to you but [consider the case for and against local font hosting](https://www.tunetheweb.com/blog/should-you-self-host-google-fonts/). By the way, You can download Google Fonts to use locally with the utility [Google Webfonts Helper](https://gwfh.mranftl.com/fonts).
+I prefer local fonts though. I will be using them in all my examples. While there might be some cons there are also some gains. It is up to you but [consider the case for and against local font hosting](https://www.tunetheweb.com/blog/should-you-self-host-google-fonts/). By the way, You can download Google Fonts to use locally with the utility [Google Webfonts Helper](https://gwfh.mranftl.com/fonts).
 
 Here is my setup with local fonts. If you use this method, you will have to add your fonts to a public folder so they will load.
 
@@ -68,11 +68,11 @@ Here is my setup with local fonts. If you use this method, you will have to add 
 
 This shortcut saves time but you can also do things manually. Here are the instructions to do things yourself if you wish. Could come in handy if Astro Fonts does not work for you.
 
-## Manually Adding Custom Fonts
+## Manually Adding Custom Fonts With a Local Font
 
 You will need to do a few things
 
-1. If using local fonts add them to your public folder.
+1. Add your fonts to your public folder
 2. Add the @font-face declaration in your css
 3. Link to your fonts in your head section
 4. Preload your fonts to prevent the flash of unstyled text
@@ -118,7 +118,7 @@ To apply your new fonts, you have to use the css property font-family. It is fai
 
 When using font-family, I have to use the name that I gave my font in the @font-face declaration. It also needs to be in quotes.
 
-## Adding Custom Fonts with Tailwind CSS
+## Adding Custom Local Fonts with Tailwind CSS
 
 1. First you will need to use @font-face in your global.css stylesheet. Here is an example.
 
