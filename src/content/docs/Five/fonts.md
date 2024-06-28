@@ -165,4 +165,4 @@ module.exports = {
 };
 ```
 
-This gives us a new class to use, "font-display." This will apply the font-family defined in our theme as display. You can add additional font-families with their own name that will become the class name.
+This gives us a new class to use, **font-display.** This will apply the font-family defined in our theme as display. You can add additional font-families with their own name that will become the class name.
