@@ -94,7 +94,7 @@ This is what the @font-face declaration looks like. Add this to your CSS stylesh
 
 ### Adding Font to Head Section and Using Preload
 
-This is what you will add to your head section to load your fonts. Adding preload while linking your fonts prevents that unstyled text from flashing. It tells the browser to prioritize downloading your fonts before other parts of the page. Preload is only used for resources that need to be loaded immediately.
+This is what you will add to your head section to load your fonts. Adding preload while linking your fonts prevents that unstyled text from flashing. It tells the browser to prioritize downloading your fonts before other parts of the page. Preload is only used for resources that need to be loaded immediately. Otherwise you might have web performance issues. Use it only for assets that load above the fold.
 
 ```html
 <link
