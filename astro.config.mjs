@@ -106,6 +106,13 @@ export default defineConfig({
           },
         },
         {
+          label: "Chapter Twelve",
+          collapsed: true,
+          autogenerate: {
+            directory: "Twelve",
+          },
+        },
+        {
           label: "Things to Remember",
           collapsed: true,
           items: [
