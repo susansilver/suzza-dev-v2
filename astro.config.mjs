@@ -22,7 +22,7 @@ export default defineConfig({
       },
       sidebar: [
         {
-          label: "Getting Sarted",
+          label: "Getting Started",
           collapsed: true,
           autogenerate: {
             directory: "Introduction",
