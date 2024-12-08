@@ -15,6 +15,17 @@ export default defineConfig({
         // Path to your Tailwind base styles:
         "./src/styles/tailwind.css",
       ],
+      head: [
+        // Example: add Fathom analytics script tag.
+        {
+          tag: "script",
+          attrs: {
+            src: "https://cloud.umami.is/script.js",
+            "data-website-id": "ed42ea0e-0332-46f7-ad90-a9b5946dc6db",
+            defer: true,
+          },
+        },
+      ],
       title: "Newbie-ish Guide to Astro",
       social: {
         github: "https://github.com/susansilver",
