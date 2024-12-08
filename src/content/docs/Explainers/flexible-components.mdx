@@ -1,0 +1,87 @@
+---
+title: Creating Flexible Components with Props
+description: How to create components that are customizable in multiple ways.
+---
+
+Coding in Public did an excellent video about this which I didn’t understand at the time. Worth a watch if you are wondering how to best make these types of flexible components
+
+import { YouTube } from "astro-embed";
+
+<YouTube id="https://www.youtube.com/watch?v=Yc7MYP8qU-8" />
+
+You can tell that I don’t have much experience with JavaScript frameworks. It took me time to understand the power of components and using props. I will admit that I used to write too much code.
+
+Originally, I created three components to control the alignment of images on my blog. I had a left-aligned, center-aligned, and right-aligned component. Don’t do things this way. It isn’t efficient. This can be only one component but it requires being clever with your props.
+
+This is how my image align component looks now. Where I can determine which alignment I want by using props to set the appropriate class.
+
+```
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+
+interface Props {
+ caption: string;
+ float?: "float-right" | "float-left" | "float-none";
+ align?: "caption-right" | "caption-left" | "caption-center";
+ imagePath: string;
+ alt: string;
+ flex?: "justify-center";
+}
+
+
+const {
+ imagePath,
+ alt,
+ caption,
+ float = "float-none",
+ align = "caption-right",
+ flex,
+ ...rest
+} = Astro.props;
+
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+ "/src/assets/*.{jpeg,jpg,png,gif}"
+);
+if (!images[imagePath])
+ throw new Error(
+   `"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`
+ );
+---
+
+
+<figure class:list={[float, flex]} class="img-position flex" {...rest}>
+ <Image
+   src={images[imagePath]()}
+   width={600}
+   height={300}
+   format="avif"
+   quality="mid"
+   alt={alt}
+ />
+ <figcaption class:list={[align, flex]} class="flex dark:text-black-900">
+   {caption}
+ </figcaption>
+</figure>
+```
+
+You see in my props that I have float, align, and flex. When I use my component, I can add the appropriate classes when I use it.
+
+For example:
+
+```
+<ImageAlign
+ imagePath="/src/assets/Godfrey_Harold_Hardy_1.jpg"
+ alt="Photograph of G.H Hardy"
+ caption="G.H Hardy"
+ float="float-right"
+ align="caption-right"
+ style="width:50%;"
+/>
+```
+
+For this image, I’ve used the float-right class to align the image right. I’ve used the caption-right class to align my caption to the right. Float and align are the props from my image align component.
+
+Don’t make a lot of work for yourself by repeating code. There was no need to split this into three components that all did similar things.

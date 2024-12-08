@@ -1,0 +1,24 @@
+---
+title: Adding Custom CSS to Tailwind
+description: It is easy to customize your CSS using Tailwind by adding your own styles to your global stylesheet.
+---
+
+This won’t be a long section because this is pretty simple to do. It is something that I didn’t realize until recently. You can use your own CSS in your global stylesheet. Where you import Tailwind. You don’t need to do anything fancy for it. Add your styles as you normally would.
+
+I do this for two reasons.
+
+1. No default styling for typography
+
+Tailwind resets all the styles and defaults to none for the typography. Tailwind’s solution to this is to use[ their typography plugin](https://github.com/tailwindlabs/tailwindcss-typography). It adds a prose class that will fix the issue and make your typography look good. But this isn’t enough for me because I like controlling the styles. There are ways to customize the typography plugin but it feels like a lot of work. When I can add my own styling as I would if I wasn’t using Tailwind.
+
+2. Spacing
+
+I recently learned about the logical properties of margins and padding.
+
+import { YouTube } from "astro-embed";
+
+<YouTube id="https://www.youtube.com/watch?v=cV9JhEV4Ll0" />
+
+There is no reason not to use them but most of these styles aren’t included in Tailwind CSS. Tailwind only includes the inline styles but only the start and end. This is for either the left or ride side of your div. But, there is also an inline property that styles both the left and right sides at the same time. There is also an inset property that will style the top and bottom that Tailwind doesn’t include. So, I define these classes myself as well as create several sizes for padding and margin.
+
+I’m not sure how things will change in[ Tailwind CSS v.4.0 which is currently in Beta](https://tailwindcss.com/blog/tailwindcss-v4-beta). Some fundamental changes are coming. Such as moving much of the config file into the CSS directly. Which makes more sense. There are also some new classes to play with. I haven’t updated my own Tailwind yet so this section may change in the future.

@@ -14,3 +14,6 @@ I will still do some Google searches to find new Astro tutorials. There are thin
 Zahedi makes it easy to understand how to build a table of contents component. I had no trouble working with the code or customizing it. It is the most straightforward that I’ve found. It doesn’t need to install any dependencies. It works with the functions already built into Astro.
 
 As a bonus, they also share how to create JavaScript for an observer. You can style the link in your table of contents when you scroll to a section divided by a header. This is a neat effect and helps people track their place in your articles. You can see it in[ practice in this tutorial from Kevin Drum](https://kld.dev/building-table-of-contents/). This is another way that you can automate creating a table of contents.
+
+Check out this component if you've updated to Astro 5.0 and your table of contents has stopped working.
+[Astro Table Of Contents Component + Sample Usage by Maciej Pędzich](https://gist.github.com/maciejpedzich/000da5c6b3a91290d49a91c9fe940ca3)

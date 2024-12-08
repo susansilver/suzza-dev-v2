@@ -106,6 +106,37 @@ export default defineConfig({
           },
         },
         {
+          label: "Explainers",
+          collapsed: true,
+          items: [
+            {
+              label: "Introduction",
+              link: "/explainers/introduction/",
+            },
+            {
+              label: "TypeScript",
+              link: "/explainers/typescript/",
+            },
+            {
+              label: "Creating Flexible Components",
+              link: "/explainers/flexible-components/",
+            },
+            {
+              label: "Using Reference",
+              link: "/explainers/reference/",
+            },
+            {
+              label: "Custom CSS in Tailwind",
+              link: "/explainers/custom-css/",
+            },
+            {
+              label: "All About getCollection and collectionEntry",
+              link: "/explainers/getcollection/",
+            },
+            // A nested group of links.
+          ],
+        },
+        {
           label: "Things to Remember",
           collapsed: true,
           items: [

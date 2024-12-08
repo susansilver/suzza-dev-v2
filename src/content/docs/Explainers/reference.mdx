@@ -1,0 +1,124 @@
+---
+title: Using Reference in Content Collections
+description: How to use the reference utility in content collections.
+---
+
+I slept on Reference for too long. It is more useful than you think. I was able to turn [Traumadump.xyz](http://Traumadump.xyz) into a wiki-style website using it. It saved me a lot of time by not repeating things over and over again in my front matter.
+
+I’m finding Reference a little hard to explain. So, I will point you to this Coding in Public video that does a great job of showing it off.
+
+import { YouTube } from "astro-embed";
+
+<YouTube id="https://www.youtube.com/watch?v=Fcw4c3wzm7I" />
+
+This is the only resource out there currently on Reference and was my go-to when I was implementing it. In fact, when I was struggling I reached out to Chris for help. He helped me understand how to use that referenced data in my .astro files.
+
+I want to give you a real example on how to use your Reference data in a template. This one is from my website Trauma Dump. I have several content collections for this site. This includes a data collection that includes all the info for the campaigns of Dimension 20. This is data that never changes so I have my other content collections reference it. One of these is a collection of Dimension 20 Players.
+
+In my Player content collection, I reference the Campaign collection. Then, I will have access to the props from the Player collection and the props of the Campaign collection. All I have to do is include the ID of the campaigns the player has played in the frontmatter of the Player posts.
+
+Here it is in practice.
+
+What is important is that you grab your campaign data after you’ve called your Player collection. Here it is in this .astro file.
+
+```
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+
+import { getEntries } from "astro:content";
+
+export async function getStaticPaths() {
+ const blogEntries = await getCollection("players");
+ return blogEntries.map((entry) => ({
+   params: { slug: entry.id },
+   props: { entry },
+ }));
+}
+
+
+
+interface Props {
+ entry: CollectionEntry<"players">;
+}
+
+
+const { entry } = Astro.props;
+
+
+const campaignNames = await getEntries(entry.data.campaigns);
+---
+```
+
+I use getCollection to get all the posts in the Players collection. Then at the bottom, I grab the related entries from the Campaign collection. That is the “const campaignNames = await getEntries(entry.data.campaigns);”. That entry.data.campaigns is the reference field in my Players collection . I’m using getEntries here because there are multiple campaigns for each player. So entry.data.campaigns is an array of all those associated campaigns. The getEntries has to come after the getCollection to work.
+
+Then I use the variable storing my campaigns data by accessing the props of the Campaign collection.
+
+```
+<ul class="border-l-2 border-blue-brand padding-left-xxl">
+           {
+             campaignNames.length > 0 ? (
+               campaignNames.map((campaign) => (
+                 <li class="capitalize">
+                   <a
+                     href={`/campaigns/${campaign.id}`}
+                     title={`View posts from "${campaign.data.title}"`}
+                   >
+                     {campaign.data.title}
+                   </a>
+                 </li>
+               ))
+             ) : (
+               <li>No campaigns found.</li>
+             )
+           }
+</ul>
+```
+
+Now, the pages created for each Player will list out every campaign that they have played in.
+
+If you want more info, here is the setup in my content collections config file.
+
+```
+const players = defineCollection({
+ loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/players" }),
+ schema: z.object({
+   name: z.string(),
+   campaigns: z.array(reference("campaignsList")),
+   updatedOn: z
+     .string()
+     .or(z.date())
+     .transform((val) => new Date(val)),
+ }),
+});
+
+const campaignsList = defineCollection({
+ loader: glob({ pattern: "**/*.yaml", base: "./src/content/campaignsList" }),
+ schema: z.object({
+   title: z.string(),
+   players: z.array(z.string()),
+   dm: z.string(),
+   order: z.number(),
+   series: z.string().optional(),
+   type: z.string(),
+   date: z
+     .string()
+     .or(z.date())
+     .transform((val) => new Date(val))
+     .optional(),
+ }),
+});
+```
+
+You should use Reference in two situations.
+
+1. When you have content that doesn’t change or rarely changes and it can be stored as data you can reference.
+
+For example, my campaignsList collection holds data that is never going to change. All these campaigns are in the past. It is much easier to reference them than include all these data in my Players and GM content collections. Don’t repeat things you don’t have to.
+
+2.  When you want to update something in one place that will appear in multiple files.
+
+For example, having an author collection referenced by your blog collection. This is great if you need to update an author bio. You only have to update the author collection. It will then update any template that uses props from that author collection. Without you changing any other files.
