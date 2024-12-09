@@ -125,4 +125,4 @@ const campaignNames = await getEntries(entry.data.campaigns);
          </ul>
 ```
 
-I hope this clears up things for people if the docs didn’t quite make sense. Sometimes you need to see it in practice to get it. As always, ping me if you have any questions.
+I hope this clears up things for people if the docs didn’t quite make sense. Sometimes you need to see it in practice to get it. As always, [ping me](mailto:suzza@susansilver.net) if you have any questions.
