@@ -62,7 +62,7 @@ There is also getEntry and getEntries.
 
 You use getEntry to grab data from a specific post in your collection. By calling that collection and using the post ID. This is[ the example from the Astro Docs](https://docs.astro.build/en/reference/modules/astro-content/#getentry). This is a single entry.
 
-It is also used to get the data from a field with a reference from your content collection. You use the ID of what you are referencing in your frontmatter. Then when you are calling that data in an .astro file you use getEntry if you are only referencing a single ID. Such as an author in an author collection.
+It is also used to get the data from a [field with a reference](https://www.youtube.com/watch?v=Fcw4c3wzm7I) from your content collection. You use the ID of what you are referencing in your frontmatter. Then when you are calling that data in an .astro file you use getEntry if you are only referencing a single ID. Such as an author in an author collection.
 
 You would using something like this in the code fences to grab that data.
 
