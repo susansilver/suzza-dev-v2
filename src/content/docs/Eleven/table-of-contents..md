@@ -17,3 +17,39 @@ As a bonus, they also share how to create JavaScript for an observer. You can st
 
 Check out this component if you've updated to Astro 5.0 and your table of contents has stopped working.
 [Astro Table Of Contents Component + Sample Usage by Maciej Pędzich](https://gist.github.com/maciejpedzich/000da5c6b3a91290d49a91c9fe940ca3)
+
+You will have to change the way that you call render for Astro 5.0.
+
+Here is my code where I implement this Table of Contents component.
+
+```
+---
+import {
+  render,
+  getCollection,
+  type CollectionEntry,
+} from "astro:content";
+
+import TableOfContents from "../components/TableOfContents.astro";
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("blog");
+
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+
+interface Props {
+  entry: CollectionEntry<"blog">;
+}
+
+
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+---
+```
+
+You will see that render is now included in your imports. And that you call it with "await render(entry)". You can see the [full details on render](https://docs.astro.build/en/guides/content-collections/#rendering-body-content) in the Astro docs.
