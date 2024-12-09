@@ -11,7 +11,7 @@ import { YouTube } from "astro-embed";
 
 <YouTube id="https://www.youtube.com/watch?v=Fcw4c3wzm7I" />
 
-This is the only resource out there currently on Reference and was my go-to when I was implementing it. In fact, when I was struggling I reached out to Chris for help. He helped me understand how to use that referenced data in my .astro files.
+This is the only resource out there currently on Reference and was my go-to when I was implementing it. In fact, when I was struggling I reached out to Chris for help. He explained how to use that referenced data in my .astro files.
 
 I want to give you a real example on how to use your Reference data in a template. This one is from my website Trauma Dump. I have several content collections for this site. This includes a data collection that includes all the info for the campaigns of Dimension 20. This is data that never changes so I have my other content collections reference it. One of these is a collection of Dimension 20 Players.
 
@@ -112,6 +112,10 @@ const campaignsList = defineCollection({
  }),
 });
 ```
+
+So, you can use getEntry or getEntries to get your reference data. There is a simple difference between them. It is how many IDs you reference in your fontmatter.
+
+You see, the field where you reference another collection, is where you will put the ID of what you are referencing. Such as the name of an author in an author collection. If that field only takes one ID then you use getEntry to grab that data. If that field can take multiple IDs then you use getEntries. Such as in my campaigns example above.
 
 You should use Reference in two situations.
 
