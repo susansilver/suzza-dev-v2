@@ -58,11 +58,19 @@ Here I am grabbing the modified date and title of my post.
 
 Without using collectionEntry, entry.data.updatedDate and entry.data.title would have red lines. Because TypeScript needs to know their types.
 
-Related to collectionEntry are getEntry and getEntries.
+There is also getEntry and getEntries.
 
 You use getEntry to grab data from a specific post in your collection. By calling that collection and using the post ID. This is[ the example from the Astro Docs](https://docs.astro.build/en/reference/modules/astro-content/#getentry). This is a single entry.
 
-You will find that getEntries is similar but gets an array of entries. This is what I use on Trauma Dump to grab all the campaigns related to each player.
+It is also used to get the data from a field with a reference from your content collection. You use the ID of what you are referencing in your frontmatter. Then when you are calling that data in an .astro file you use getEntry if you are only referencing a single ID. Such as an author in an author collection.
+
+You would using something like this in the code fences to grab that data.
+
+```
+const authorName = await getEntry(entry.data.author);
+```
+
+You will find that getEntries is similar but gets an array of entries. In the fontmatter you use multiple IDs in the reference field. This is what I use on Trauma Dump to grab all the campaigns related to each player.
 
 ```
 ---
