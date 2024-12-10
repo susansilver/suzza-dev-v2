@@ -25,6 +25,13 @@ export default defineConfig({
             defer: true,
           },
         },
+        {
+          tag: "meta",
+          attrs: {
+            property: "og:image",
+            content: "/og-image-suzza-dev.png",
+          },
+        },
       ],
       title: "Newbie-ish Guide to Astro",
       social: {
