@@ -32,6 +32,20 @@ export default defineConfig({
             content: "/og-image-suzza-dev.png",
           },
         },
+        {
+          tag: "meta",
+          attrs: {
+            property: "twitter:image",
+            content: "/og-image-suzza-dev.png",
+          },
+        },
+        {
+          tag: "meta",
+          attrs: {
+            property: "twitter:card",
+            content: "summary_large_image",
+          },
+        },
       ],
       title: "Newbie-ish Guide to Astro",
       social: {
